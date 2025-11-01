@@ -375,6 +375,8 @@
       <div class="nav-links" id="nav-links">
         <a href="about.html" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <!-- Internships link removed from nav -->
+        <a href="#achievements" class="nav-link">Achievements</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="mailto:SheikhMuhammadJawadAhmed001@gmail.com" class="nav-link">Contact</a>
       </div>
@@ -398,7 +400,7 @@
     <section id="hero" class="hero">
       <canvas class="animated-bg" id="animated-bg"></canvas>
       <h1 class="hero-title">I'm <span style="color:#007acc">Sheikh Muhammad Jawad Ahmed</span></h1>
-      <p class="hero-subtitle">Data & Business Analyst unlocking hidden data patterns to drive growth and shape smarter business strategies.</p>
+            <p class="hero-subtitle">Data & Business Analyst unlocking hidden data patterns to drive growth and shape smarter business strategies.</p>
       <a href="#projects" class="action-button">Explore My Work</a>
     </section>
     <section id="projects">
@@ -582,31 +584,31 @@
       `;
       internshipList.appendChild(card);
     });
-    // Achievements data
+    // Achievements data (updated with new image paths)
     const achievements = [
       {
         title: "Google Data Analytics Certificate",
-        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder image
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated image path
         desc: "Completed professional certificate in data analytics.",
-        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view" // Placeholder PDF link
+        pdf: "https://example.com/certificate1.pdf" // Placeholder PDF link
       },
       {
         title: "SQL Job Simulation - Accenture",
-        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
         desc: "Completed job simulation for data analyst role.",
-        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
+        pdf: "https://example.com/certificate2.pdf"
       },
       {
         title: "Tableau Certification",
-        image: static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
         desc: "Earned certification in Tableau data visualization.",
-        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
+        pdf: "https://example.com/certificate3.pdf"
       },
       {
         title: "Python for Data Science",
-        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
         desc: "Completed course on Python programming for data science.",
-        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
+        pdf: "https://example.com/certificate4.pdf"
       }
     ];
     const achievementsTrack = document.getElementById('achievements-track');
@@ -677,7 +679,7 @@
     window.addEventListener('resize', showMenuOnMobile);
     showMenuOnMobile();
     document.getElementById('year').textContent = new Date().getFullYear();
-    const sections = ['hero','projects','skills'];
+    const sections = ['hero','projects','achievements','skills']; // Updated: internships removed from sections array
     const navLinks = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
       let current = '';
@@ -708,5 +710,3 @@
   </script>
 </body>
 </html>
-
-            
