@@ -375,8 +375,6 @@
       <div class="nav-links" id="nav-links">
         <a href="about.html" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="#internships" class="nav-link">Internships</a>
-        <a href="#achievements" class="nav-link">Achievements</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="mailto:SheikhMuhammadJawadAhmed001@gmail.com" class="nav-link">Contact</a>
       </div>
@@ -588,27 +586,27 @@
     const achievements = [
       {
         title: "Google Data Analytics Certificate",
-        image: "https://via.placeholder.com/400x300?text=Certificate+1", // Placeholder image
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder image
         desc: "Completed professional certificate in data analytics.",
-        pdf: "https://example.com/certificate1.pdf" // Placeholder PDF link
+        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view" // Placeholder PDF link
       },
       {
         title: "SQL Job Simulation - Accenture",
-        image: "https://via.placeholder.com/400x300?text=Certificate+2",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
         desc: "Completed job simulation for data analyst role.",
-        pdf: "https://example.com/certificate2.pdf"
+        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
       },
       {
         title: "Tableau Certification",
-        image: "https://via.placeholder.com/400x300?text=Certificate+3",
+        image: static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
         desc: "Earned certification in Tableau data visualization.",
-        pdf: "https://example.com/certificate3.pdf"
+        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
       },
       {
         title: "Python for Data Science",
-        image: "https://via.placeholder.com/400x300?text=Certificate+4",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
         desc: "Completed course on Python programming for data science.",
-        pdf: "https://example.com/certificate4.pdf"
+        pdf: "https://drive.google.com/file/d/1c38uOR4v0eccmjxICOP2Cr4z2zTcAnyL/view"
       }
     ];
     const achievementsTrack = document.getElementById('achievements-track');
@@ -679,7 +677,7 @@
     window.addEventListener('resize', showMenuOnMobile);
     showMenuOnMobile();
     document.getElementById('year').textContent = new Date().getFullYear();
-    const sections = ['hero','projects','internships','achievements','skills'];
+    const sections = ['hero','projects','skills'];
     const navLinks = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
       let current = '';
