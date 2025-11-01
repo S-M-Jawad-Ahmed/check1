@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | Data Analyst Portfolio</title>
   <link rel="stylesheet" href="styles.773fc3ddad0cc4eae39b.css">
+  <!-- Glide.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -297,35 +299,26 @@
       opacity: 1;
       transform: rotate(0deg) scale(1);
     }
-    /* New styles for Achievements slider */
-    .achievements-slider {
-      position: relative;
-      width: 100%;
-      max-width: 1280px; /* Updated to 1280px */
+    /* Glide.js Custom Styles for Certifications Slider */
+    .glide {
+      max-width: 100%; /* Fixed size hata diya, responsive */
       margin: 0 auto;
-      overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.10);
       animation: fadeInUp 1.2s;
     }
-    .achievements-track {
-      display: flex;
-      width: calc(100% * 4); /* Assuming 4 items */
-      transition: transform 0.5s ease;
-    }
-    .achievement-item {
-      flex: 0 0 100%;
+    .glide__slide {
       position: relative;
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .achievement-item:hover {
+    .glide__slide:hover {
       transform: scale(1.05);
     }
     .achievement-image {
       width: 100%;
-      height: 900px; /* Updated to 900px for 1280x900 */
-      object-fit: contain; /* Changed to contain to prevent stretching */
+      height: 500px; /* Height kam ki, pehle 900px tha */
+      object-fit: contain; /* Contain to prevent stretching */
       border-radius: 16px;
     }
     .achievement-overlay {
@@ -363,8 +356,8 @@
       .project-list { grid-template-columns: 1fr; gap: 24px; }
       .card-content h3 { font-size: 1.2em; }
       .skill-item { font-size: 0.95em; padding: 12px 24px; }
-      .achievements-slider { max-width: 100%; }
-      .achievement-image { height: 600px; } /* Adjusted for mobile */
+      .glide { max-width: 100%; }
+      .achievement-image { height: 400px; } /* Mobile mein aur kam */
     }
   </style>
 </head>
@@ -402,310 +395,320 @@
       <p class="hero-subtitle">Data & Business Analyst unlocking hidden data patterns to drive growth and shape smarter business strategies.</p>
       <a href="#projects" class="action-button">Explore My Work</a>
     </section>
-   <section id="projects">
-  <h2 class="section-title" style="margin-top: 30px;">Featured Data Analysis Projects</h2>
-  <div class="project-list" id="project-list"></div>
-</section>
-<!-- New Internships Section -->
-<section id="internships">
-  <h2 class="section-title">Internships</h2>
-  <div class="project-list" id="internship-list"></div>
-</section>
-<!-- New Certifications Section -->
-<section id="achievements">
-  <h2 class="section-title">Certifications</h2> <!-- Updated title -->
-  <div class="achievements-slider">
-    <div class="achievements-track" id="achievements-track"></div>
-  </div>
-</section>
-<section id="skills">
-  <h2 class="section-title">Core Analytical Skills</h2>
-  <div class="skills-grid" id="skills-grid"></div>
-</section>
-</main>
-<footer style="border-top: 1px solid #dee2e6; color: #6c757d; font-size: 1em; margin-top: 70px; padding: 28px; text-align: center; background: #fff;">
-  <p>© <span id="year"></span> Sheikh Muhammad Jawad Ahmed</p>
-</footer>
-<script>
-  const modeToggle = document.getElementById('mode-toggle');
-  let darkMode = false;
-  function setMode(dark, persist=true) {
-    darkMode = dark;
-    modeToggle.checked = dark;
-    document.body.style.background = dark ? '#181c24' : 'linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%)';
-    document.body.style.color = dark ? '#e2e6ed' : '#222';
-    document.querySelector('header').style.background = dark ? 'rgba(24,28,36,0.97)' : 'rgba(255,255,255,0.95)';
-    document.querySelector('footer').style.background = dark ? '#181c24' : '#fff';
-    document.querySelector('footer').style.color = dark ? '#b6c2d1' : '#6c757d';
-    document.querySelector('footer').style.borderTopColor = dark ? '#333' : '#dee2e6';
-    document.querySelectorAll('.nav-title').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
-    document.querySelectorAll('.nav-link').forEach(e => e.style.color = dark ? '#e2e6ed' : '#333');
-    document.querySelectorAll('.nav-link.active').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
-    document.querySelectorAll('.section-title').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
-    document.querySelectorAll('.hero').forEach(e => e.style.background = dark ? '#23272f' : 'linear-gradient(120deg, #e3f0ff 0%, #f8f9fa 100%)');
-    document.querySelectorAll('.hero-title').forEach(e => e.style.color = dark ? '#e2e6ed' : '#222');
-    document.querySelectorAll('.hero-subtitle').forEach(e => e.style.color = dark ? '#b6c2d1' : '#444');
-    document.querySelectorAll('.project-card').forEach(e => {
-      e.style.background = dark ? '#23272f' : '#fff';
-      e.style.color = dark ? '#e2e6ed' : '#222';
-      e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 8px 24px rgba(0,0,0,0.10)';
-      e.style.borderColor = dark ? '#23272f' : '#00c6fb';
-    });
-    document.querySelectorAll('.card-content h3').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
-    document.querySelectorAll('.card-meta').forEach(e => e.style.color = dark ? '#b6c2d1' : '#6c757d');
-    document.querySelectorAll('.card-excerpt').forEach(e => e.style.color = dark ? '#e2e6ed' : '#333');
-    document.querySelectorAll('.read-more-link').forEach(e => e.style.color = dark ? '#00c6fb' : '#00c6fb');
-    document.querySelectorAll('.skills-grid .skill-item').forEach(e => {
-      e.style.background = dark ? 'transparent' : 'linear-gradient(90deg, #e3f0ff 0%, #c2e9fb 100%)';
-      e.style.color = dark ? '#00c6fb' : '#007acc';
-      e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 4px 16px rgba(0,0,0,0.09)';
-    });
-    document.querySelectorAll('.skills-grid').forEach(e => e.style.background = dark ? 'transparent' : '');
-    document.querySelectorAll('.achievement-item').forEach(e => {
-      e.style.background = dark ? '#23272f' : '#fff';
-      e.style.color = dark ? '#e2e6ed' : '#222';
-    });
-    document.querySelectorAll('.achievement-overlay').forEach(e => e.style.background = dark ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.7)');
-    if (window.innerWidth <= 700) {
-      document.querySelectorAll('.nav-links').forEach(e => e.style.background = dark ? '#23272f' : 'rgba(255,255,255,0.98)');
-    }
-    document.querySelectorAll('.nav-link').forEach(e => {
-      e.style.color = dark ? '#e2e6ed' : '#222';
-      e.style.borderBottomColor = dark ? '#333' : '#e0e0e0';
-    });
-    if (persist) localStorage.setItem('darkMode', dark ? '1' : '0');
-  }
-  modeToggle.addEventListener('change', function() {
-    setMode(this.checked);
-  });
-  document.addEventListener('DOMContentLoaded', function() {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode !== null) {
-      setMode(savedMode === '1', false);
-    } else {
-      setMode(window.matchMedia('(prefers-color-scheme: dark)').matches, true);
-    }
-  });
-  const canvas = document.getElementById('animated-bg');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    let circles = [];
-    for (let i = 0; i < 18; i++) {
-      circles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: 18 + Math.random() * 22,
-        dx: 0.5 + Math.random(),
-        dy: 0.5 + Math.random(),
-        color: `rgba(${180+Math.random()*60},${220+Math.random()*30},${255},0.18)`
+    <section id="projects">
+      <h2 class="section-title" style="margin-top: 30px;">Featured Data Analysis Projects</h2>
+      <div class="project-list" id="project-list"></div>
+    </section>
+    <!-- New Internships Section -->
+    <section id="internships">
+      <h2 class="section-title">Internships</h2>
+      <div class="project-list" id="internship-list"></div>
+    </section>
+    <!-- New Certifications Section with Glide.js -->
+    <section id="achievements">
+      <h2 class="section-title">Certifications</h2>
+      <div class="glide" id="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides" id="achievements-slides"></ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">‹</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">›</button>
+        </div>
+        <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+      </div>
+    </section>
+    <section id="skills">
+      <h2 class="section-title">Core Analytical Skills</h2>
+      <div class="skills-grid" id="skills-grid"></div>
+    </section>
+  </main>
+  <footer style="border-top: 1px solid #dee2e6; color: #6c757d; font-size: 1em; margin-top: 70px; padding: 28px; text-align: center; background: #fff;">
+    <p>© <span id="year"></span> Sheikh Muhammad Jawad Ahmed</p>
+  </footer>
+  <!-- Glide.js JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+  <script>
+    const modeToggle = document.getElementById('mode-toggle');
+    let darkMode = false;
+    function setMode(dark, persist=true) {
+      darkMode = dark;
+      modeToggle.checked = dark;
+      document.body.style.background = dark ? '#181c24' : 'linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%)';
+      document.body.style.color = dark ? '#e2e6ed' : '#222';
+      document.querySelector('header').style.background = dark ? 'rgba(24,28,36,0.97)' : 'rgba(255,255,255,0.95)';
+      document.querySelector('footer').style.background = dark ? '#181c24' : '#fff';
+      document.querySelector('footer').style.color = dark ? '#b6c2d1' : '#6c757d';
+      document.querySelector('footer').style.borderTopColor = dark ? '#333' : '#dee2e6';
+      document.querySelectorAll('.nav-title').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
+      document.querySelectorAll('.nav-link').forEach(e => e.style.color = dark ? '#e2e6ed' : '#333');
+      document.querySelectorAll('.nav-link.active').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
+      document.querySelectorAll('.section-title').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
+      document.querySelectorAll('.hero').forEach(e => e.style.background = dark ? '#23272f' : 'linear-gradient(120deg, #e3f0ff 0%, #f8f9fa 100%)');
+      document.querySelectorAll('.hero-title').forEach(e => e.style.color = dark ? '#e2e6ed' : '#222');
+      document.querySelectorAll('.hero-subtitle').forEach(e => e.style.color = dark ? '#b6c2d1' : '#444');
+      document.querySelectorAll('.project-card').forEach(e => {
+        e.style.background = dark ? '#23272f' : '#fff';
+        e.style.color = dark ? '#e2e6ed' : '#222';
+        e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 8px 24px rgba(0,0,0,0.10)';
+        e.style.borderColor = dark ? '#23272f' : '#00c6fb';
       });
-    }
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      circles.forEach(c => {
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
-        ctx.fillStyle = c.color;
-        ctx.fill();
-        c.x += c.dx; c.y += c.dy;
-        if (c.x > canvas.width + c.r) c.x = -c.r;
-        if (c.y > canvas.height + c.r) c.y = -c.r;
+      document.querySelectorAll('.card-content h3').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
+      document.querySelectorAll('.card-meta').forEach(e => e.style.color = dark ? '#b6c2d1' : '#6c757d');
+      document.querySelectorAll('.card-excerpt').forEach(e => e.style.color = dark ? '#e2e6ed' : '#333');
+      document.querySelectorAll('.read-more-link').forEach(e => e.style.color = dark ? '#00c6fb' : '#00c6fb');
+      document.querySelectorAll('.skills-grid .skill-item').forEach(e => {
+        e.style.background = dark ? 'transparent' : 'linear-gradient(90deg, #e3f0ff 0%, #c2e9fb 100%)';
+        e.style.color = dark ? '#00c6fb' : '#007acc';
+        e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 4px 16px rgba(0,0,0,0.09)';
       });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-  const projects = [
-    {
-      title: "Cyclistic Case Study: Member vs Casual Riders Analysis",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
-      meta: "Date: September 2025  |  Tools Used: BigQuery, RStudio and Tableau",
-      excerpt: "It's a large scale analysis of 5.64 million Cyclistic rides to reveal behavioral differences between annual members and casual riders. All insights are reproducible and based on the latest available data.",
-      link: "projects/cyclistic-case-study/index.html"
-    },
-  ];
-  const projectList = document.getElementById('project-list');
-  projects.forEach(project => {
-    const card = document.createElement('a');
-    card.className = 'project-card';
-    card.href = project.link;
-    card.innerHTML = `
-      <div class="card-image-wrapper">
-        <img class="card-image" src="${project.image}" alt="${project.title}" />
-      </div>
-      <div class="card-content">
-        <h3>${project.title}</h3>
-        <p class="card-meta">${project.meta}</p>
-        <p class="card-excerpt">${project.excerpt}</p>
-        <span class="read-more-link">View Details →</span>
-      </div>
-    `;
-    projectList.appendChild(card);
-  });
-  // Internships data
-  const internships = [
-    {
-      title: "Data Analyst Internship at XYZ Corp",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder, replace with actual
-      meta: "Duration: June 2023 - August 2023  |  Location: Remote",
-      excerpt: "Worked on data visualization projects using Tableau and SQL to analyze customer behavior data.",
-      link: "projects/cyclistic-case-study/index.html" // Link to cyclistic as per request
-    },
-    {
-      title: "Business Intelligence Intern at ABC Ltd",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder
-      meta: "Duration: January 2024 - March 2024  |  Location: On-site",
-      excerpt: "Assisted in building dashboards with Power BI and performed data cleaning with Python.",
-      link: "projects/cyclistic-case-study/index.html" // Link to cyclistic
-    }
-  ];
-  const internshipList = document.getElementById('internship-list');
-  internships.forEach(internship => {
-    const card = document.createElement('a');
-    card.className = 'project-card';
-    card.href = internship.link;
-    card.innerHTML = `
-      <div class="card-image-wrapper">
-        <img class="card-image" src="${internship.image}" alt="${internship.title}" />
-      </div>
-      <div class="card-content">
-        <h3>${internship.title}</h3>
-        <p class="card-meta">${internship.meta}</p>
-        <p class="card-excerpt">${internship.excerpt}</p>
-        <span class="read-more-link">View Details →</span>
-      </div>
-    `;
-    internshipList.appendChild(card);
-  });
-  // Achievements data (updated with new image paths)
-  const achievements = [
-    {
-      title: "Google Data Analytics Certificate",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated image path
-      desc: "Completed professional certificate in data analytics.",
-      pdf: "https://example.com/certificate1.pdf" // Placeholder PDF link
-    },
-    {
-      title: "SQL Job Simulation - Accenture",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
-      desc: "Completed job simulation for data analyst role.",
-      pdf: "https://example.com/certificate2.pdf"
-    },
-    {
-      title: "Tableau Certification",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
-      desc: "Earned certification in Tableau data visualization.",
-      pdf: "https://example.com/certificate3.pdf"
-    },
-    {
-      title: "Python for Data Science",
-      image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
-      desc: "Completed course on Python programming for data science.",
-      pdf: "https://example.com/certificate4.pdf"
-    }
-  ];
-  const achievementsTrack = document.getElementById('achievements-track');
-  achievements.forEach(achievement => {
-    const item = document.createElement('div');
-    item.className = 'achievement-item';
-    item.innerHTML = `
-      <img class="achievement-image" src="${achievement.image}" alt="${achievement.title}" />
-      <div class="achievement-overlay">
-        <h3 class="achievement-title">${achievement.title}</h3>
-        <p class="achievement-desc">${achievement.desc}</p>
-      </div>
-    `;
-    item.addEventListener('click', () => {
-      window.open(achievement.pdf, '_blank');
-    });
-    achievementsTrack.appendChild(item);
-  });
-  // Auto-slide for achievements
-  let currentIndex = 0;
-  const totalItems = achievements.length;
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % totalItems;
-    achievementsTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }, 4000); // Slide every 4 seconds
-  const skills = [
-    "Excel",
-    "Python, R, SQL",
-    "Tableau, Power BI, Matplotlib, Seaborn",
-    "PostgreSQL, BigQuery",
-    "Data Wrangling & Normalization",
-    "Feature Engineering",
-    "Data Validation & Quality Checks",
-    "Correlation & Causation Analysis",
-    "Anomaly Detection"
-  ];
-  const skillsGrid = document.getElementById('skills-grid');
-  skills.forEach(skill => {
-    const item = document.createElement('div');
-    item.className = 'skill-item';
-    item.textContent = skill;
-    skillsGrid.appendChild(item);
-  });
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinksContainer = document.getElementById('nav-links');
-  menuToggle.addEventListener('click', function() {
-    navLinksContainer.classList.toggle('open');
-    menuToggle.classList.toggle('active');
-    if (menuToggle.classList.contains('active')) {
-      menuToggle.children[0].style.transform = 'rotate(45deg) translateY(10px)';
-      menuToggle.children[1].style.opacity = '0';
-      menuToggle.children[2].style.transform = 'rotate(-45deg) translateY(-10px)';
-    } else {
-      menuToggle.children[0].style.transform = '';
-      menuToggle.children[1].style.opacity = '';
-      menuToggle.children[2].style.transform = '';
-    }
-  });
-  function showMenuOnMobile() {
-    if (window.innerWidth <= 700) {
-      menuToggle.style.display = 'block';
-    } else {
-      menuToggle.style.display = 'none';
-      navLinksContainer.classList.remove('open');
-      menuToggle.classList.remove('active');
-    }
-  }
-  window.addEventListener('resize', showMenuOnMobile);
-  showMenuOnMobile();
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const sections = ['hero','projects','skills']; // Updated: internships and achievements removed from sections array
-  const navLinks = document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(id => {
-      const section = document.getElementById(id);
-      if (section && window.scrollY >= section.offsetTop - 80) {
-        current = id;
+      document.querySelectorAll('.skills-grid').forEach(e => e.style.background = dark ? 'transparent' : '');
+      document.querySelectorAll('.achievement-item').forEach(e => {
+        e.style.background = dark ? '#23272f' : '#fff';
+        e.style.color = dark ? '#e2e6ed' : '#222';
+      });
+      document.querySelectorAll('.achievement-overlay').forEach(e => e.style.background = dark ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.7)');
+      if (window.innerWidth <= 700) {
+        document.querySelectorAll('.nav-links').forEach(e => e.style.background = dark ? '#23272f' : 'rgba(255,255,255,0.98)');
       }
+      document.querySelectorAll('.nav-link').forEach(e => {
+        e.style.color = dark ? '#e2e6ed' : '#222';
+        e.style.borderBottomColor = dark ? '#333' : '#e0e0e0';
+      });
+      if (persist) localStorage.setItem('darkMode', dark ? '1' : '0');
+    }
+    modeToggle.addEventListener('change', function() {
+      setMode(this.checked);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode !== null) {
+        setMode(savedMode === '1', false);
+      } else {
+        setMode(window.matchMedia('(prefers-color-scheme: dark)').matches, true);
+      }
+    });
+    const canvas = document.getElementById('animated-bg');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      let circles = [];
+      for (let i = 0; i < 18; i++) {
+        circles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 18 + Math.random() * 22,
+          dx: 0.5 + Math.random(),
+          dy: 0.5 + Math.random(),
+          color: `rgba(${180+Math.random()*60},${220+Math.random()*30},${255},0.18)`
+        });
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        circles.forEach(c => {
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+          ctx.fillStyle = c.color;
+          ctx.fill();
+          c.x += c.dx; c.y += c.dy;
+          if (c.x > canvas.width + c.r) c.x = -c.r;
+          if (c.y > canvas.height + c.r) c.y = -c.r;
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+    const projects = [
+      {
+        title: "Cyclistic Case Study: Member vs Casual Riders Analysis",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+        meta: "Date: September 2025  |  Tools Used: BigQuery, RStudio and Tableau",
+        excerpt: "It's a large scale analysis of 5.64 million Cyclistic rides to reveal behavioral differences between annual members and casual riders. All insights are reproducible and based on the latest available data.",
+        link: "projects/cyclistic-case-study/index.html"
+      },
+    ];
+    const projectList = document.getElementById('project-list');
+    projects.forEach(project => {
+      const card = document.createElement('a');
+      card.className = 'project-card';
+      card.href = project.link;
+      card.innerHTML = `
+        <div class="card-image-wrapper">
+          <img class="card-image" src="${project.image}" alt="${project.title}" />
+        </div>
+        <div class="card-content">
+          <h3>${project.title}</h3>
+          <p class="card-meta">${project.meta}</p>
+          <p class="card-excerpt">${project.excerpt}</p>
+          <span class="read-more-link">View Details →</span>
+        </div>
+      `;
+      projectList.appendChild(card);
+    });
+    // Internships data
+    const internships = [
+      {
+        title: "Data Analyst Internship at XYZ Corp",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder, replace with actual
+        meta: "Duration: June 2023 - August 2023  |  Location: Remote",
+        excerpt: "Worked on data visualization projects using Tableau and SQL to analyze customer behavior data.",
+        link: "projects/cyclistic-case-study/index.html" // Link to cyclistic as per request
+      },
+      {
+        title: "Business Intelligence Intern at ABC Ltd",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder
+        meta: "Duration: January 2024 - March 2024  |  Location: On-site",
+        excerpt: "Assisted in building dashboards with Power BI and performed data cleaning with Python.",
+        link: "projects/cyclistic-case-study/index.html" // Link to cyclistic
+      }
+    ];
+    const internshipList = document.getElementById('internship-list');
+    internships.forEach(internship => {
+      const card = document.createElement('a');
+      card.className = 'project-card';
+      card.href = internship.link;
+      card.innerHTML = `
+        <div class="card-image-wrapper">
+          <img class="card-image" src="${internship.image}" alt="${internship.title}" />
+        </div>
+        <div class="card-content">
+          <h3>${internship.title}</h3>
+          <p class="card-meta">${internship.meta}</p>
+          <p class="card-excerpt">${internship.excerpt}</p>
+          <span class="read-more-link">View Details →</span>
+        </div>
+      `;
+      internshipList.appendChild(card);
+    });
+    // Achievements data (updated with new image paths)
+    const achievements = [
+      {
+        title: "Google Data Analytics Certificate",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated image path
+        desc: "Completed professional certificate in data analytics.",
+        pdf: "https://example.com/certificate1.pdf" // Placeholder PDF link
+      },
+      {
+        title: "SQL Job Simulation - Accenture",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
+        desc: "Completed job simulation for data analyst role.",
+        pdf: "https://example.com/certificate2.pdf"
+      },
+      {
+        title: "Tableau Certification",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
+        desc: "Earned certification in Tableau data visualization.",
+        pdf: "https://example.com/certificate3.pdf"
+      },
+      {
+        title: "Python for Data Science",
+        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Updated
+        desc: "Completed course on Python programming for data science.",
+        pdf: "https://example.com/certificate4.pdf"
+      }
+    ];
+    const achievementsSlides = document.getElementById('achievements-slides');
+    achievements.forEach(achievement => {
+      const slide = document.createElement('li');
+      slide.className = 'glide__slide';
+      slide.innerHTML = `
+        <img class="achievement-image" src="${achievement.image}" alt="${achievement.title}" />
+        <div class="achievement-overlay">
+          <h3 class="achievement-title">${achievement.title}</h3>
+          <p class="achievement-desc">${achievement.desc}</p>
+        </div>
+      `;
+      slide.addEventListener('click', () => {
+        window.open(achievement.pdf, '_blank');
+      });
+      achievementsSlides.appendChild(slide);
+    });
+    // Initialize Glide.js for Certifications Slider
+    new Glide('#glide', {
+      type: 'carousel',
+      autoplay: 4000, // Auto-slide every 4 seconds
+      hoverpause: true,
+      perView: 1,
+      loop: true
+    }).mount();
+    const skills = [
+      "Excel",
+      "Python, R, SQL",
+      "Tableau, Power BI, Matplotlib, Seaborn",
+      "PostgreSQL, BigQuery",
+      "Data Wrangling & Normalization",
+      "Feature Engineering",
+      "Data Validation & Quality Checks",
+      "Correlation & Causation Analysis",
+      "Anomaly Detection"
+    ];
+    const skillsGrid = document.getElementById('skills-grid');
+    skills.forEach(skill => {
+      const item = document.createElement('div');
+      item.className = 'skill-item';
+      item.textContent = skill;
+      skillsGrid.appendChild(item);
+    });
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinksContainer = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', function() {
+      navLinksContainer.classList.toggle('open');
+      menuToggle.classList.toggle('active');
+      if (menuToggle.classList.contains('active')) {
+        menuToggle.children[0].style.transform = 'rotate(45deg) translateY(10px)';
+        menuToggle.children[1].style.opacity = '0';
+        menuToggle.children[2].style.transform = 'rotate(-45deg) translateY(-10px)';
+      } else {
+        menuToggle.children[0].style.transform = '';
+        menuToggle.children[1].style.opacity = '';
+        menuToggle.children[2].style.transform = '';
+      }
+    });
+    function showMenuOnMobile() {
+      if (window.innerWidth <= 700) {
+        menuToggle.style.display = 'block';
+      } else {
+        menuToggle.style.display = 'none';
+        navLinksContainer.classList.remove('open');
+        menuToggle.classList.remove('active');
+      }
+    }
+    window.addEventListener('resize', showMenuOnMobile);
+    showMenuOnMobile();
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const sections = ['hero','projects','skills']; // Updated: internships and achievements removed from sections array
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section && window.scrollY >= section.offsetTop - 80) {
+          current = id;
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
     });
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
+      if (link.getAttribute('href').startsWith('#')) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.getElementById(link.getAttribute('href').substring(1));
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+          }
+        });
       }
     });
-  });
-  navLinks.forEach(link => {
-  if (link.getAttribute('href').startsWith('#')) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-       const target = document.getElementById(link.getAttribute('href').substring(1));
-    if (target) {
-      window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-    }
-  });
-  }
-});
-</script>
+  </script>
 </body>
 </html>
