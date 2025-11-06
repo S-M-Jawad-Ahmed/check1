@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | Data Analyst Portfolio</title>
-  <link rel="stylesheet" href="styles.773fc3ddad0cc4eae39b.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css" />
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css" />
+  <link rel="stylesheet" href="styles.773fc3ddad0cc4eae39b.css">
   <style>
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; 
+       overflow-x: hidden;  /* YE ADD KARO */
+    }
+    
     body {
       margin: 0;
       font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
       background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
       min-height: 100vh;
       color: #222;
+      overflow-x: hidden;  /* YE ADD KARO - horizontal scroll block */
     }
+    
     header {
       background: rgba(255,255,255,0.95);
       box-shadow: 0 4px 16px rgba(0,0,0,0.07);
@@ -118,8 +123,19 @@
     }
     .action-button:hover {
       background: linear-gradient(90deg,#005f99,#00b6e6);
-      transform: translateY(-2px) scale(1.04);
+      transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 122, 204, 0.5);
     }
+    
+body.dark-mode .action-button:hover {
+  box-shadow: 0 10px 30px rgba(0, 198, 251, 0.6);
+}
+
+.action-button:active {
+  transform: translateY(-1px);
+}
+   
+    
     .animated-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -141,6 +157,7 @@
       gap: 36px;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       margin-bottom: 48px;
+      padding: 0 20px;
       animation: fadeInUp 1.2s;
     }
     .project-card {
@@ -156,11 +173,32 @@
       position: relative;
       animation: fadeInUp 1.5s;
     }
+    
     .project-card:hover {
-      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
-      transform: translateY(-8px) scale(1.04);
-      border: 2px solid #00c6fb;
-    }
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  transform: translateY(-8px);
+  border: 2px solid #00c6fb;
+}
+
+/* Dark Mode Project Cards */
+body.dark-mode .project-card {
+  background: #1e293b;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+body.dark-mode .project-card:hover {
+  border: 2px solid #00c6fb;
+  box-shadow: 0 16px 40px rgba(0, 198, 251, 0.3);
+}
+
+body.dark-mode .card-content h3 {
+  color: #00c6fb;
+}
+
+body.dark-mode .card-excerpt {
+  color: #cbd5e1;
+}
+    
     .card-image-wrapper {
       height: 190px;
       overflow: hidden;
@@ -299,58 +337,287 @@
       opacity: 1;
       transform: rotate(0deg) scale(1);
     }
-    /* New styles for Achievements slider (will be replaced by Glide styles) */
-    .achievements-slider {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-      animation: fadeInUp 1.2s;
-    }
-    .achievements-track {
-      display: flex;
-      width: calc(100% * 4); /* Assuming 4 items */
-      transition: transform 0.5s ease;
-    }
-    .achievement-item {
-      flex: 0 0 100%;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .achievement-item:hover {
-      transform: scale(1.05);
-    }
-    .achievement-image {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 16px;
-    }
-    .achievement-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 20px;
-      border-radius: 0 0 16px 16px;
-    }
-    .achievement-title {
-      font-size: 1.5em;
-      font-weight: 700;
-      margin: 0;
-    }
-    .achievement-desc {
-      font-size: 1em;
-      margin: 5px 0 0 0;
-    }
+    
+    /* View Details Button - Same as Certificate Button */
+.view-details-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #007acc, #00c6fb);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1em;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  align-self: center;  /* ADD - center alignment */
+  width: fit-content;  /* ADD - content ke hisaab se width */
+}
 
-    /* Glide slider specific (overrides will be added at bottom via the Glide CSS, kept minimal here) */
+.view-details-btn:hover {
+  background: linear-gradient(90deg, #005f99, #00b6e6);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 122, 204, 0.5);
+}
+
+body.dark-mode .view-details-btn:hover {
+  box-shadow: 0 10px 30px rgba(0, 198, 251, 0.6);
+}
+
+.view-details-btn:active {
+  transform: translateY(-1px);
+}
+    
+    
+    
+    /* ========== GLIDE CERTIFICATE SLIDER STYLES (WITH DARK MODE) ========== */
+#achievements {
+  padding: 10px 10px;
+  background: transparent;
+  transition: background 0.3s ease;
+  overflow: visible;  /* ADD */
+}
+
+body.dark-mode #achievements {
+  background: transparent;
+  overflow: visible;  /* ADD */
+}
+
+.glide {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 2000px;
+  overflow: visible;  /* ADD */
+}
+
+.glide__track {
+  overflow: visible !important;
+}
+
+.glide__slides {
+  display: flex;
+  align-items: center;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  overflow: visible;  /* ADD */
+}
+
+.glide__slide {
+  opacity: 0.4;
+  transform: scale(0.85) rotateY(15deg);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  filter: blur(2px);
+}
+
+.glide__slide--active {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+  z-index: 10;
+  filter: blur(0);
+}
+
+.certificate-card {
+  background: #fff;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #007acc, #00c6fb, #007acc) 1;
+  border-radius: 20px;
+  padding: 0;
+  margin: 40px 20px;
+  box-shadow: 0 20px 60px rgba(0, 122, 204, 0.3);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+body.dark-mode .certificate-card {
+  background: #1e293b;
+  border-image: linear-gradient(135deg, #00c6fb, #007acc, #00c6fb) 1;
+  box-shadow: 0 20px 60px rgba(0, 198, 251, 0.4);
+}
+
+.glide__slide--active .certificate-card {
+  box-shadow: 0 30px 80px rgba(0, 122, 204, 0.5);
+  border-image: linear-gradient(135deg, #00c6fb, #007acc, #00c6fb) 1;
+}
+
+body.dark-mode .glide__slide--active .certificate-card {
+  box-shadow: 0 30px 80px rgba(0, 198, 251, 0.6);
+}
+
+.certificate-image-wrapper {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e3f0ff 0%, #c2e9fb 100%);
+  position: relative;
+}
+
+body.dark-mode .certificate-image-wrapper {
+  background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+}
+
+.certificate-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.certificate-card:hover .certificate-image {
+  transform: scale(1.08);
+}
+
+.certificate-info {
+  padding: 30px;
+  background: linear-gradient(to bottom, #fff 0%, #f8fcff 100%);
+  display: flex;           /* ADD */
+  flex-direction: column;  /* ADD */
+  align-items: center;     /* ADD - center everything */
+  text-align: center;      /* ADD - text center */
+}
+
+body.dark-mode .certificate-info {
+  background: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+}
+
+.certificate-name {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #007acc;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .certificate-name {
+  color: #00c6fb;
+}
+
+.certificate-description {
+  font-size: 1.05em;
+  color: #555;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .certificate-description {
+  color: #cbd5e1;
+}
+
+.view-certificate-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #007acc, #00c6fb);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.05em;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  align-self: center;  /* ADD */
+  width: fit-content;  /* ADD */
+}
+
+.view-certificate-btn:hover {
+  background: linear-gradient(90deg, #005f99, #00b6e6);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 122, 204, 0.5);
+}
+
+body.dark-mode .view-certificate-btn:hover {
+  box-shadow: 0 10px 30px rgba(0, 198, 251, 0.6);
+}
+
+.view-certificate-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Glide Navigation Arrows */
+.glide__arrows {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.glide__arrow {
+  pointer-events: all;
+  background: rgba(0, 122, 204, 0.9);
+  color: #fff;
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+body.dark-mode .glide__arrow {
+  background: rgba(0, 198, 251, 0.9);
+  box-shadow: 0 6px 20px rgba(0, 198, 251, 0.5);
+}
+
+.glide__arrow:hover {
+  background: rgba(0, 198, 251, 1);
+  transform: scale(1.15);
+  box-shadow: 0 8px 30px rgba(0, 198, 251, 0.6);
+}
+
+.glide__arrow--left {
+  margin-left: -25px;
+}
+
+.glide__arrow--right {
+  margin-right: -25px;
+}
+
+.glide__arrow--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+
+/* Section Title Dark Mode */
+body.dark-mode .section-title {
+  color: #00c6fb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .certificate-image-wrapper {
+    height: 250px;
+  }
+  
+  .certificate-name {
+    font-size: 1.3em;
+  }
+  
+  .glide__arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+    
     @media (max-width: 700px) {
       nav { flex-direction: row; align-items: center; padding: 12px 8px; position: relative; min-height: 56px; }
       .nav-title { font-size: 1.3em; margin-bottom: 0; line-height: 28px; }
@@ -367,8 +634,6 @@
       .project-list { grid-template-columns: 1fr; gap: 24px; }
       .card-content h3 { font-size: 1.2em; }
       .skill-item { font-size: 0.95em; padding: 12px 24px; }
-      .achievements-slider { max-width: 100%; }
-      .achievement-image { height: 200px; }
     }
   </style>
 </head>
@@ -379,8 +644,6 @@
       <div class="nav-links" id="nav-links">
         <a href="about.html" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <!-- Internships link removed from nav -->
-        <a href="#achievements" class="nav-link">Certification</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="mailto:SheikhMuhammadJawadAhmed001@gmail.com" class="nav-link">Contact</a>
       </div>
@@ -404,42 +667,74 @@
     <section id="hero" class="hero">
       <canvas class="animated-bg" id="animated-bg"></canvas>
       <h1 class="hero-title">I'm <span style="color:#007acc">Sheikh Muhammad Jawad Ahmed</span></h1>
-            <p class="hero-subtitle">Data & Business Analyst unlocking hidden data patterns to drive growth and shape smarter business strategies.</p>
+      <p class="hero-subtitle">Data & Business Analyst unlocking hidden data patterns to drive growth and shape smarter business strategies.</p>
       <a href="#projects" class="action-button">Explore My Work</a>
     </section>
     <section id="projects">
-      <h2 class="section-title" style="margin-top: 30px;">Featured Data Analysis Projects</h2>
+      <h2 class="section-title" style="margin-top: 30px;">Featured Project</h2>
       <div class="project-list" id="project-list"></div>
     </section>
-    <!-- New Internships Section -->
-    <section id="internships">
-      <h2 class="section-title">Internships</h2>
-      <div class="project-list" id="internship-list"></div>
-    </section>
-
-    <!-- REPLACED: Achievements section -> Certification (Glide.js slider) -->
+    
+    <!-- Internships Section -->
+<section id="internships">
+  <div class="container">
+    <h2 class="section-title">Internships</h2>
+    <div class="project-list" id="internship-list">
+      <!-- Internship cards will be added by JavaScript -->
+    </div>
+  </div>
+</section>
+    
+    
     <section id="achievements">
-      <h2 class="section-title">Certification</h2>
+  <div class="container">
+    <h2 class="section-title">Certifications</h2>
+    
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <!-- Certificate 1 -->
+          <li class="glide__slide">
+            <div class="certificate-card">
+              <div class="certificate-image-wrapper">
+                <img src="path/to/certificate1.jpg" alt="Certificate 1" class="certificate-image">
 
-      <!-- Glide slider container -->
-      <div class="glide" id="glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides" id="achievements-slides">
-            <!-- Slides injected by JS -->
-          </ul>
-        </div>
-
-        <!-- Arrows -->
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous">&#10094;</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Next">&#10095;</button>
-        </div>
-
-        <!-- Bullets Pagination -->
-        <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+              </div>
+              <div class="certificate-info">
+                <h3 class="certificate-name">Certificate Name 1</h3>
+                <p class="certificate-description">Description of the certificate and what it represents.</p>
+                <a href="path/to/certificate1.pdf" target="_blank" class="view-certificate-btn">View Certificate</a>
+              </div>
+            </div>
+          </li>
+          
+          <!-- Certificate 2 -->
+          <li class="glide__slide">
+            <div class="certificate-card">
+              <div class="certificate-image-wrapper">
+                <img src="path/to/certificate2.jpg" alt="Certificate 2" class="certificate-image">
+              </div>
+              <div class="certificate-info">
+                <h3 class="certificate-name">Certificate Name 2</h3>
+                <p class="certificate-description">Description of the certificate and what it represents.</p>
+                <a href="path/to/certificate2.pdf" target="_blank" class="view-certificate-btn">View Certificate</a>
+              </div>
+            </div>
+          </li>
+          
+          <!-- Add more certificates as needed -->
+        </ul>
       </div>
-    </section>
 
+      <!-- Navigation Arrows -->
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">‹</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+    
     <section id="skills">
       <h2 class="section-title">Core Analytical Skills</h2>
       <div class="skills-grid" id="skills-grid"></div>
@@ -448,7 +743,6 @@
   <footer style="border-top: 1px solid #dee2e6; color: #6c757d; font-size: 1em; margin-top: 70px; padding: 28px; text-align: center; background: #fff;">
     <p>© <span id="year"></span> Sheikh Muhammad Jawad Ahmed</p>
   </footer>
-
   <script>
     const modeToggle = document.getElementById('mode-toggle');
     let darkMode = false;
@@ -468,12 +762,45 @@
       document.querySelectorAll('.hero').forEach(e => e.style.background = dark ? '#23272f' : 'linear-gradient(120deg, #e3f0ff 0%, #f8f9fa 100%)');
       document.querySelectorAll('.hero-title').forEach(e => e.style.color = dark ? '#e2e6ed' : '#222');
       document.querySelectorAll('.hero-subtitle').forEach(e => e.style.color = dark ? '#b6c2d1' : '#444');
-      document.querySelectorAll('.project-card').forEach(e => {
-        e.style.background = dark ? '#23272f' : '#fff';
-        e.style.color = dark ? '#e2e6ed' : '#222';
-        e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 8px 24px rgba(0,0,0,0.10)';
-        e.style.borderColor = dark ? '#23272f' : '#00c6fb';
-      });
+     
+      // Project Cards Dark Mode
+document.querySelectorAll('.project-card').forEach(e => {
+  e.style.background = dark ? '#1e293b' : '#fff';
+  e.style.boxShadow = dark ? '0 8px 24px rgba(0,0,0,0.25)' : '0 8px 24px rgba(0,0,0,0.10)';
+});
+
+document.querySelectorAll('.card-content h3').forEach(e => {
+  e.style.color = dark ? '#00c6fb' : '#007acc';
+});
+
+document.querySelectorAll('.card-excerpt').forEach(e => {
+  e.style.color = dark ? '#cbd5e1' : '#333';
+});
+      
+      
+      // ===== HOVER GLOW EFFECT FOR PROJECT & INTERNSHIP CARDS =====
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    const isDark = document.body.classList.contains('dark-mode');
+    if (isDark) {
+      this.style.boxShadow = '0 0 60px rgba(0, 198, 251, 0.4)';  // 0 0 = center glow
+    } else {
+      this.style.boxShadow = '0 0 60px rgba(0, 122, 204, 0.3)';  // 0 0 = center glow
+    }
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    const isDark = document.body.classList.contains('dark-mode');
+    if (isDark) {
+      this.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)';
+    } else {
+      this.style.boxShadow = '0 8px 24px rgba(0,0,0,0.10)';
+    }
+  });
+});
+      
+      
+      
       document.querySelectorAll('.card-content h3').forEach(e => e.style.color = dark ? '#00c6fb' : '#007acc');
       document.querySelectorAll('.card-meta').forEach(e => e.style.color = dark ? '#b6c2d1' : '#6c757d');
       document.querySelectorAll('.card-excerpt').forEach(e => e.style.color = dark ? '#e2e6ed' : '#333');
@@ -484,11 +811,55 @@
         e.style.boxShadow = dark ? '0 8px 32px rgba(0,0,0,0.35)' : '0 4px 16px rgba(0,0,0,0.09)';
       });
       document.querySelectorAll('.skills-grid').forEach(e => e.style.background = dark ? 'transparent' : '');
-      document.querySelectorAll('.achievement-item').forEach(e => {
-        e.style.background = dark ? '#23272f' : '#fff';
-        e.style.color = dark ? '#e2e6ed' : '#222';
+      
+      // ============ DARK MODE FOR CERTIFICATES SECTION ============
+     
+      
+     
+      
+      // Certificate cards ke liye JavaScript mein
+document.querySelectorAll('.certificate-card').forEach(e => {
+  e.style.background = dark ? '#1e293b' : '#fff';
+  e.style.border = dark ? '2px solid #00c6fb' : '2px solid #007acc';  // YE USE KARO
+  e.style.borderRadius = '20px';  // YE ADD KARO
+  e.style.boxShadow = dark ? '0 20px 60px rgba(0, 198, 251, 0.4)' : '0 20px 60px rgba(0, 122, 204, 0.3)';
+  // border-image wali line REMOVE kar do
+});
+      
+      document.querySelectorAll('.glide__slide--active .certificate-card').forEach(e => {
+        e.style.boxShadow = dark ? '0 0px 80px rgba(0, 198, 251, 0.6)' : '0 0px 80px rgba(0, 122, 204, 0.5)';
       });
-      document.querySelectorAll('.achievement-overlay').forEach(e => e.style.background = dark ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.7)');
+      
+      document.querySelectorAll('.certificate-image-wrapper').forEach(e => {
+        e.style.background = dark ? 'linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%)' : 'linear-gradient(135deg, #e3f0ff 0%, #c2e9fb 100%)';
+      });
+      
+      document.querySelectorAll('.certificate-info').forEach(e => {
+        e.style.background = dark ? 'linear-gradient(to bottom, #1e293b 0%, #0f172a 100%)' : 'linear-gradient(to bottom, #fff 0%, #f8fcff 100%)';
+      });
+      
+      document.querySelectorAll('.certificate-name').forEach(e => {
+        e.style.color = dark ? '#00c6fb' : '#007acc';
+      });
+      
+      document.querySelectorAll('.certificate-description').forEach(e => {
+        e.style.color = dark ? '#cbd5e1' : '#555';
+      });
+      
+      document.querySelectorAll('.glide__arrow').forEach(e => {
+        e.style.background = dark ? 'rgba(0, 198, 251, 0.9)' : 'rgba(0, 122, 204, 0.9)';
+        e.style.boxShadow = dark ? '0 6px 20px rgba(0, 198, 251, 0.5)' : '0 6px 20px rgba(0, 122, 204, 0.4)';
+      });
+      
+      document.querySelectorAll('.glide__bullet').forEach(e => {
+        e.style.background = dark ? 'rgba(0, 198, 251, 0.4)' : 'rgba(0, 122, 204, 0.3)';
+      });
+      
+      document.querySelectorAll('.glide__bullet--active').forEach(e => {
+        e.style.boxShadow = dark ? '0 0 10px rgba(0, 198, 251, 0.6)' : '0 0 10px rgba(0, 122, 204, 0.5)';
+      });
+      // ============ END DARK MODE FOR CERTIFICATES ============
+      
       if (window.innerWidth <= 700) {
         document.querySelectorAll('.nav-links').forEach(e => e.style.background = dark ? '#23272f' : 'rgba(255,255,255,0.98)');
       }
@@ -566,58 +937,63 @@
           <h3>${project.title}</h3>
           <p class="card-meta">${project.meta}</p>
           <p class="card-excerpt">${project.excerpt}</p>
-          <span class="read-more-link">View Details →</span>
+         <span class="view-details-btn">View Details</span>
         </div>
       `;
       projectList.appendChild(card);
     });
+    
     // Internships data
-    const internships = [
-      {
-        title: "Data Analyst Internship at XYZ Corp",
-        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder, replace with actual
-        meta: "Duration: Mar 2025 – Apr 2025 (4 weeks)  |  Location: Remote",
-        excerpt: "Worked on data visualization projects using Tableau and SQL to analyze customer behavior data.",
-        link: "internship_1.html" // Link to cyclistic as per request
-      },
-      {
-        title: "Business Intelligence Intern at ABC Ltd",
-        image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png", // Placeholder
-        meta: "Duration: January 2024 - March 2024  |  Location: On-site",
-        excerpt: "Assisted in building dashboards with Power BI and performed data cleaning with Python.",
-        link: "projects/cyclistic-case-study/index.html" // Link to cyclistic
-      }
-    ];
-    const internshipList = document.getElementById('internship-list');
-    internships.forEach(internship => {
-      const card = document.createElement('a');
-      card.className = 'project-card';
-      card.href = internship.link;
-      card.innerHTML = `
-        <div class="card-image-wrapper">
-          <img class="card-image" src="${internship.image}" alt="${internship.title}" />
-        </div>
-        <div class="card-content">
-          <h3>${internship.title}</h3>
-          <p class="card-meta">${internship.meta}</p>
-          <p class="card-excerpt">${internship.excerpt}</p>
-          <span class="read-more-link">View Details →</span>
-        </div>
-      `;
-      internshipList.appendChild(card);
-    });
-    // NOTE: old Achievements JS removed (replaced by Glide-based Certification slider below)
+const internships = [
+  {
+    title: "Data Analyst Internship at XYZ Corp",
+    image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+    meta: "Duration: June 2025 - August 2025  |  Location: Remote",
+    excerpt: "Worked on data visualization projects using Tableau and SQL to analyze customer behavior and provide actionable insights.",
+    link: "internship_1.html"
+  },
+  {
+    title: "Business Intelligence Intern at ABC Ltd",
+    image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
+    meta: "Duration: January 2025 - March 2025  |  Location: Gurgaon",
+    excerpt: "Analyzed big building construction data using Power BI and performed data cleaning with Python.",
+    link: "projects/cyclistic-case-study/index.html"
+  }
+];
 
+// Generate internship cards
+const internshipList = document.getElementById('internship-list');
+internships.forEach(internship => {
+  const card = document.createElement('a');
+  card.className = 'project-card';
+  card.href = internship.link;
+  card.innerHTML = `
+    <div class="card-image-wrapper">
+      <img class="card-image" src="${internship.image}" alt="${internship.title}" />
+    </div>
+    <div class="card-content">
+      <h3>${internship.title}</h3>
+      <p class="card-meta">${internship.meta}</p>
+      <p class="card-excerpt">${internship.excerpt}</p>
+      <span class="view-details-btn">View Details</span>
+    </div>
+  `;
+  internshipList.appendChild(card);
+});
+    
     const skills = [
-      "Excel",
-      "Python, R, SQL",
-      "Tableau, Power BI, Matplotlib, Seaborn",
-      "PostgreSQL, BigQuery",
-      "Data Wrangling & Normalization",
-      "Feature Engineering",
-      "Data Validation & Quality Checks",
-      "Correlation & Causation Analysis",
-      "Anomaly Detection"
+"Excel, Google Sheets",
+"Python, R, SQL",
+"Tableau, Power BI, Looker Studio",
+"Pandas, NumPy, Matplotlib, Seaborn",
+"PostgreSQL, BigQuery",
+"Data Cleaning & Wrangling",
+"Feature Engineering",
+"Data Validation & Quality Checks",
+"Statistical Analysis & Data Interpretation",
+"Anomaly Detection"
+
+      
     ];
     const skillsGrid = document.getElementById('skills-grid');
     skills.forEach(skill => {
@@ -653,7 +1029,7 @@
     window.addEventListener('resize', showMenuOnMobile);
     showMenuOnMobile();
     document.getElementById('year').textContent = new Date().getFullYear();
-    const sections = ['hero','projects','achievements','skills']; // Updated: internships removed from sections array
+    const sections = ['hero','projects','skills'];
     const navLinks = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
       let current = '';
@@ -671,89 +1047,38 @@
       });
     });
     navLinks.forEach(link => {
-    if (link.getAttribute('href').startsWith('#')) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-         const target = document.getElementById(link.getAttribute('href').substring(1));
-      if (target) {
-        window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+      if (link.getAttribute('href').startsWith('#')) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.getElementById(link.getAttribute('href').substring(1));
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+          }
+        });
       }
     });
-  }
-});
   </script>
+  
+  <!-- Glide.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
-  <!-- Glide CSS & JS placed at bottom as requested -->
- 
-  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
-
-  <script>
-    // Populate Glide slider with certificates and initialize
-    (function() {
-      const achievements = [
-        {
-          title: "Google Data Analytics Certificate",
-          image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
-          desc: "Completed professional certificate in data analytics.",
-          pdf: "https://example.com/certificate1.pdf"
-        },
-        {
-          title: "SQL Job Simulation - Accenture",
-          image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
-          desc: "Completed job simulation for data analyst role.",
-          pdf: "https://example.com/certificate2.pdf"
-        },
-        {
-          title: "Tableau Certification",
-          image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
-          desc: "Earned certification in Tableau data visualization.",
-          pdf: "https://example.com/certificate3.pdf"
-        },
-        {
-          title: "Python for Data Science",
-          image: "static/bb462c9d162995f54086c46bba01ad65/002ea/cyclistic-case-study.png",
-          desc: "Completed course on Python programming for data science.",
-          pdf: "https://example.com/certificate4.pdf"
-        }
-      ];
-
-      const slidesContainer = document.getElementById('achievements-slides');
-      achievements.forEach(ach => {
-        const li = document.createElement('li');
-        li.className = 'glide__slide';
-        li.innerHTML = `
-          <img class="achievement-image" src="${ach.image}" alt="${ach.title}" />
-          <div class="achievement-overlay" style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:rgba(0,0,0,0.6);color:#fff;">
-            <h3 style="margin:0;font-size:1.1rem;font-weight:700;">${ach.title}</h3>
-            <p style="margin:6px 0 0;font-size:0.95rem;">${ach.desc}</p>
-          </div>
-        `;
-        li.addEventListener('click', () => {
-          if (ach.pdf) window.open(ach.pdf, '_blank');
-        });
-        slidesContainer.appendChild(li);
-      });
-
-      // Initialize Glide after slides are injected
-      const glide = new Glide('#glide', {
-        type: 'carousel',
-        startAt: 0,
-        perView: 3,
-        gap: 30,
-        autoplay: 4000,
-        hoverpause: true,
-        animationDuration: 600,
-        bound: true,
-        rewind: false,
-        peek: { before: 60, after: 60 },
-        breakpoints: {
-          900: { perView: 2, peek: { before: 40, after: 40 } },
-          600: { perView: 1, peek: { before: 20, after: 20 } }
-        }
-      });
-
-      glide.mount();
-    })();
-  </script>
+<script>
+  // Initialize the certificate slider
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 3,
+    focusAt: 'center',
+    gap: 30,
+    autoplay: 4000,
+    hoverpause: true,
+    animationDuration: 600,
+    breakpoints: {
+      1024: { perView: 2 },
+      768: { perView: 1 }
+    }
+  }).mount();
+</script>
+  
 </body>
 </html>
