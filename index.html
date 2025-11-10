@@ -549,6 +549,44 @@ body.dark-mode .view-certificate-btn:hover {
   transform: translateY(-1px);
 }
 
+
+/* Certificate Tags */
+.certificate-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.certificate-tag {
+  background: transparent;
+  border: 2px solid #007acc;
+  color: #007acc;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.certificate-tag:hover {
+  background: #007acc;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .certificate-tag {
+  border-color: #00c6fb;
+  color: #00c6fb;
+}
+
+body.dark-mode .certificate-tag:hover {
+  background: #00c6fb;
+  color: #0f172a;
+}
+   
+
 /* Glide Navigation Arrows */
 .glide__arrows {
   position: absolute;
@@ -780,7 +818,10 @@ body.dark-mode .section-title {
               <div class="certificate-info">
                 <h3 class="certificate-name">Critical Thinking for better judgement and Decision Making</h3>
                 <p class="certificate-description">NASBA-accredited LinkedIn Learning course focused on structured thinking, logical reasoning, and effective decision-making while minimizing cognitive bias.</p>
-               <p class="certificate-tags">Critical Thinking • Decision-Making</p>
+               <div class="certificate-tags">
+        <span class="certificate-tag">Critical Thinking</span>
+        <span class="certificate-tag">Decision-Making</span>
+      </div>
                <a href="#" target="_blank" class="view-certificate-btn">View Certificate</a>
               </div>
             </div>
