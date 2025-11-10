@@ -650,7 +650,23 @@ body.dark-mode .section-title {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .certificate-image-wrapper {
-    height: 250px;
+    height: auto;  /* 250px se auto */
+    min-height: 180px;  /* ADD */
+    max-height: 280px;  /* ADD */
+    display: block;  /* ADD - flex se block */
+    padding: 0;  /* ADD */
+  }
+  
+  .certificate-card {
+    margin: 20px 10px;  /* ADD - desktop pe 40px 20px hai */
+  }
+  
+  .certificate-image {
+    width: 100%;  /* ADD */
+    height: auto;  /* ADD */
+    max-height: 280px;  /* ADD */
+    object-fit: contain;  /* ADD */
+    display: block;  /* ADD */
   }
   
   .certificate-name {
