@@ -29,6 +29,20 @@
     .desc-animate {
       animation: fadeInDesc 0.8s cubic-bezier(.68,-0.55,.27,1.55) both;
     }
+    
+    
+    body.dark-mode .sponsor-logos p {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .sponsor-text {
+  color: #e0e0e0 !important;
+}
+
+ 
+    
+    
+    
     @keyframes fadeInDesc {
       0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -174,19 +188,9 @@
       .project-content th, .project-content td { padding: 10px 8px; font-size: 0.9em; }
       .project-content th { font-size: 0.85em; }
       
-      .sponsor-logos {
-    justify-content: space-between !important;
-    gap: 25px !important;
-  }
-  .sponsor-logos p {
-    font-size: 0.75em !important;
-    text-align: left !important;
-  }
-  .sponsor-logos p:last-child {
-    text-align: right !important;
-  }
-      
-    }
+
+    
+    
     
 
     
@@ -223,9 +227,10 @@
 
 <!-- Two logos - centered and small -->
 <div class="sponsor-logos" style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0;">
-  <p style="font-size: 0.80em; color: #666; text-align: center;">Supported by Rochester Institute of Technology</p>
-  <p style="font-size: 0.80em; color: #666; text-align: center;">Powered by Excelerate</p>
+  <p class="sponsor-text" style="font-size: 0.75em; text-align: center;">Supported by Rochester Institute of Technology</p>
+  <p class="sponsor-text" style="font-size: 0.75em; text-align: center;">Powered by Excelerate</p>
 </div>
+
 </div>
     
   <div class="project-meta">
