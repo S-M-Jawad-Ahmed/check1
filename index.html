@@ -603,38 +603,59 @@ body.dark-mode .certificate-tag:hover {
 }
 
 .top-performer-badge:hover {
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.1);  /* rotation hataya */
 }
 
 .top-performer-badge img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));  /* badge ko visible banane ke liye */
 }
 
+/* Tooltip for badge */
 .badge-tooltip {
   position: absolute;
-  top: -35px;
+  top: 55px;  /* neeche dikhaenge, upar nahi */
   right: 0;
-  background: rgba(0, 122, 204, 0.95);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.85em;
-  font-weight: 600;
+  background: transparent;  /* bg hataya */
+  color: #007acc;  /* text color */
+  padding: 4px 8px;
+  border-radius: 0;
+  font-size: 0.8em;
+  font-weight: 700;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: none;  /* shadow hataya */
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);  /* text readable banane ke liye */
 }
 
 body.dark-mode .badge-tooltip {
-  background: rgba(0, 198, 251, 0.95);
+  background: transparent;  /* dark mode mein bhi transparent */
+  color: #00c6fb;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .top-performer-badge:hover .badge-tooltip {
   opacity: 1;
+}
+
+/* Card content ko badge se space dena */
+.card-content {
+  padding: 26px;
+  padding-top: 70px;  /* top pe space badge ke liye - mobile mein title safe rahega */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop pe normal padding */
+@media (min-width: 768px) {
+  .card-content {
+    padding-top: 26px;  /* desktop pe normal */
+  }
 }
 
 
