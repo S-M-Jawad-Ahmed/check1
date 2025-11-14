@@ -585,6 +585,61 @@ body.dark-mode .certificate-tag:hover {
   background: #00c6fb;
   color: #0f172a;
 }
+
+
+
+   
+
+/* Top Performer Badge */
+.top-performer-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.top-performer-badge:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.top-performer-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.badge-tooltip {
+  position: absolute;
+  top: -35px;
+  right: 0;
+  background: rgba(0, 122, 204, 0.95);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85em;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .badge-tooltip {
+  background: rgba(0, 198, 251, 0.95);
+}
+
+.top-performer-badge:hover .badge-tooltip {
+  opacity: 1;
+}
+
+
+
+
    
 
 /* Glide Navigation Arrows */
@@ -1059,19 +1114,23 @@ document.querySelectorAll('.certificate-card').forEach(e => {
       projectList.appendChild(card);
     });
     
-    // Internships data
+// Internships data
 const internships = [
   {
     title: "AI Data Analyst Intern at Excelerate",
     meta: "Duration: Mar 2025 – Apr 2025  |  Location: Remote <br> Supported by Rochester Institute of Technology",
     excerpt: "Performed data cleaning, exploratory analysis and predictive modeling using Python, Excel, Google Sheets and Google Colab. Built a Random Forest churn model achieving 99.87% accuracy to improve user retention by identifying at-risk users.<br>Recognized as Star Performer.",
-    link: "internship_1.html"
+    link: "internship_1.html",
+    hasBadge: true,  // ADD - badge dikhana hai
+    badgeImage: "Images/Star Performer_AI Data Analyst Intern at Excelerate.png"  // ADD - badge image path
   },
   {
     title: "Data Visualization Associate Intern at Excelerate",
     meta: "Duration: Apr 2025 - May 2025  |  Location: Remote <br> Supported by Saint Louis University",
     excerpt: "Led a global team to design an end-to-end data pipeline and interactive Looker Studio dashboard. Consolidated 6 datasets (300K+ records) into a unified master table, delivering clear and actionable insights. <br>Recognized as Star Performer with a 90% overall 360° evaluation.",
-    link: "internship_2.html"
+    link: "internship_2.html",
+    hasBadge: true,  // ADD - badge dikhana hai
+    badgeImage: "Images/Star Performer_Data Visualization Associate Intern at Excelerate.png"  // ADD - badge image path
   }
 ];
 
@@ -1081,7 +1140,18 @@ internships.forEach(internship => {
   const card = document.createElement('a');
   card.className = 'project-card';
   card.href = internship.link;
+  card.style.position = 'relative';  // ADD - badge positioning ke liye
+  
+  // Badge HTML - agar hasBadge true hai
+  const badgeHTML = internship.hasBadge 
+    ? `<div class="top-performer-badge">
+         <img src="${internship.badgeImage}" alt="Top Performer">
+         <span class="badge-tooltip">Top Performer</span>
+       </div>`
+    : '';
+  
   card.innerHTML = `
+    ${badgeHTML}
     <div class="card-content">
       <h3>${internship.title}</h3>
       <p class="card-meta">${internship.meta}</p>
