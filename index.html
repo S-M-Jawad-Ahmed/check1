@@ -603,59 +603,60 @@ body.dark-mode .certificate-tag:hover {
 }
 
 .top-performer-badge:hover {
-  transform: scale(1.1);  /* rotation hataya */
+  transform: scale(1.1);
 }
 
 .top-performer-badge img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));  /* badge ko visible banane ke liye */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
 }
 
 /* Tooltip for badge */
 .badge-tooltip {
   position: absolute;
-  top: 55px;  /* neeche dikhaenge, upar nahi */
+  top: 50px;
   right: 0;
-  background: transparent;  /* bg hataya */
-  color: #007acc;  /* text color */
-  padding: 4px 8px;
+  background: transparent;
+  color: #007ACC;
+  padding: 3px 1px;
   border-radius: 0;
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-weight: 700;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  box-shadow: none;  /* shadow hataya */
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);  /* text readable banane ke liye */
+  box-shadow: none;
 }
 
 body.dark-mode .badge-tooltip {
-  background: transparent;  /* dark mode mein bhi transparent */
-  color: #00c6fb;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  background: transparent;
+  color: #10C5F6;
 }
 
 .top-performer-badge:hover .badge-tooltip {
   opacity: 1;
 }
 
-/* Card content ko badge se space dena */
+/* Card content - badge ke liye right side se space */
 .card-content {
   padding: 26px;
-  padding-top: 70px;  /* top pe space badge ke liye - mobile mein title safe rahega */
+  padding-right: 70px;  /* right se space - badge ke liye (50px badge + 30px margin) */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Desktop pe normal padding */
-@media (min-width: 768px) {
-  .card-content {
-    padding-top: 26px;  /* desktop pe normal */
-  }
+/* Title ko bhi right se space - wrap hoga badge se pehle */
+.card-content h3 {
+  color: #007acc;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding-right: 0;  /* already parent mein padding hai */
 }
 
 
@@ -1005,7 +1006,10 @@ document.querySelectorAll('.project-card').forEach(card => {
       document.querySelectorAll('.skills-grid').forEach(e => e.style.background = dark ? 'transparent' : '');
       
       // ============ DARK MODE FOR CERTIFICATES SECTION ============
-     
+     // Badge Tooltip Dark Mode
+document.querySelectorAll('.badge-tooltip').forEach(e => {
+  e.style.color = dark ? '#10C5F6' : '#007ACC';
+});
       
      
       
